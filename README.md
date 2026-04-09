@@ -84,11 +84,12 @@ then "Update Fields" (F9).
 *If you did not receive the SeaBreeze source code, or already have a pre-compiled
 SetUp.msi installer, you may skip this section.*
 
-- [Windows](#windows)
-- [Linux](#linux)
-- [macOS](#macos)
-- [MinGW](#mingw)
+- [Windows](#build-windows)
+- [Linux](#build-linux)
+- [macOS](#build-macos)
+- [MinGW](#build-mingw)
 
+<a id="build-windows"></a>
 ### Windows
 
 SeaBreeze is normally built under Windows using Visual Studio 2010, although
@@ -150,6 +151,7 @@ Fix:   This nearly always means that SeaBreeze.dll was compiled in 32-bit mode a
        application are compiled to the same target and try again.
 ```
 
+<a id="build-linux"></a>
 ### Linux
 
 Dependencies
@@ -185,6 +187,7 @@ LD_LIBRARY_PATH above is properly defined, these should work.  If they do not,
 then they may need to be updated to reflect the current state of the driver
 API.
 
+<a id="build-macos"></a>
 ### MacOS
 
 Dependencies
@@ -193,6 +196,7 @@ Dependencies
 
 Basically, you should be able to follow the [Linux Building](#linux) instructions (i.e. \c make).
 
+<a id="build-mingw"></a>
 ### MinGW
 
 The following was tested with an msys environment using 64bit (mingw-w64) gcc (4.8.2).
@@ -209,10 +213,11 @@ drivers using [Zadig](http://zadig.akeo.ie/).
 
 ## Installing SeaBreeze
 
-- [Windows Install](#windows)
-- [Linux Install](#linux)
-- [macOS Install](#macos)
+- [Windows Install](#install-windows)
+- [Linux Install](#install-linux)
+- [macOS Install](#install-macos)
 
+<a id="install-windows"></a>
 ### Windows
 
 Simply double-click SeaBreeze-vX.Y-Setup32.msi (or *64.msi), which should
@@ -268,6 +273,7 @@ appropriate (see 'dpinst /?' for other options):
   C:> $ARCH/dpinst.exe /q /lm /c
 ```
 
+<a id="install-linux"></a>
 ### Linux
 
 For Linux computers to recognize Ocean Optics spectrometers and allow non-root
@@ -276,6 +282,7 @@ users to claim and control the devices, you'll need to install the provided
 (usually) /etc/udev/rules.d.  Note that older versions of udev use the "SYSFS"
 rule nomenclature; the provided file uses the newer "ATTR" standard.
 
+<a id="install-macos"></a>
 ### MacOS
 
 - [ ] Document MacOS installation
@@ -290,10 +297,11 @@ should work with a "runtime / redistributable" copy of SeaBreeze installed
 through .msi installers.  However, the expectation remains that users would
 normally compile SeaBreeze locally.
 
-- [Testing on Windows](#windows)
-- [Testing on Linux](#linux)
-- [Testing on macOS](#macos)
+- [Testing on Windows](#test-windows)
+- [Testing on Linux](#test-linux)
+- [Testing on macOS](#test-macos)
 
+<a id="test-windows"></a>
 ### Windows
 
 To ensure that the device driver has been installed correctly:
@@ -328,6 +336,7 @@ To the path of your debug SeaBreeze.dll, i.e.:
 
     const string DLL = @"C:\Code\seabreeze-code\trunk\SeaBreeze\os-support\windows\VisualStudio2013\x64\Debug\SeaBreeze.dll";
 
+<a id="test-linux"></a>
 ### Linux
 
 ```
@@ -336,6 +345,7 @@ To the path of your debug SeaBreeze.dll, i.e.:
     $ ./test/seabreeze_test_posix
 ```
 
+<a id="test-macos"></a>
 ### MacOS
 
 ```
