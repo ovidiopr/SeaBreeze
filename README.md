@@ -1,13 +1,11 @@
 # SeaBreeze API
 
-\tableofcontents
-
 ## Overview
 
 SeaBreeze is a minimalistic, multi-platform (Windows, Linux, MacOS) device driver
 for Ocean Optics spectrometers, designed specifically for embedded applications
 needing to run in resource-constrained hardware environments.  SeaBreeze provides
-a fully working and tested <b>REFERENCE IMPLEMENTATION</b> of the Ocean Optics USB
+a fully working and tested **REFERENCE IMPLEMENTATION** of the Ocean Optics USB
 interface, demonstrating how Ocean Optics spectrometers can be commanded and
 controlled from C/C++.   It is provided with full C/C++ source code so that
 customers can customize and extend it to support exactly those features and
@@ -83,8 +81,8 @@ then "Update Fields" (F9).
 
 ## Building SeaBreeze
 
-<i>If you did not receive the SeaBreeze source code, or already have a pre-compiled
-SetUp.msi installer, you may skip this section.</i>
+*If you did not receive the SeaBreeze source code, or already have a pre-compiled
+SetUp.msi installer, you may skip this section.*
 
 - [Windows](#windows)
 - [Linux](#linux)
@@ -99,9 +97,9 @@ and 2013 in the os-support/windows directory.
 
 Dependencies
 - Visual Studio
-- <a href="http://www.microsoft.com/en-us/download/details.aspx?id=11800">Microsoft WinDDK</a> (7600.16385.1 recommended)
+- [Microsoft WinDDK](http://www.microsoft.com/en-us/download/details.aspx?id=11800) (7600.16385.1 recommended)
 - (Note that .NET is not required)
-- Visual Studio 2013 requires the <a href="https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d">Installer Projects extension</a>
+- Visual Studio 2013 requires the [Installer Projects extension](https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d)
 
 #### Visual Studio
 
@@ -191,29 +189,29 @@ API.
 
 Dependencies
 - MacOS 6.5 or higher (normally tested with 6.8)
-- gcc / g++ (comes with <a href="https://developer.apple.com/xcode">XCode</a>)
+- gcc / g++ (comes with [XCode](https://developer.apple.com/xcode))
 
-Basically, you should be able to follow the \ref build_linux instructions (i.e. \c make).
+Basically, you should be able to follow the [Linux Building](#linux) instructions (i.e. \c make).
 
 ### MinGW
 
 The following was tested with an msys environment using 64bit (mingw-w64) gcc (4.8.2).
 
 Dependencies
-- libusb-win32 1.2.6 (https://sourceforge.net/projects/libusb-win32/files/)
+- [libusb-win32 1.2.6](https://sourceforge.net/projects/libusb-win32/files/)
 
 With respect to the msys tree:
 1. copy libusb0.dll into /local/lib 
 2. copy libusb0_usb.h into /local/include 
 
 To use Ocean spectrometers via libusb on Windows, you can create libusb0-based 
-drivers using Zadig (http://zadig.akeo.ie/).
+drivers using [Zadig](http://zadig.akeo.ie/).
 
 ## Installing SeaBreeze
 
-- \ref install_win
-- \ref install_linux
-- \ref install_macos
+- [Windows Install](#windows)
+- [Linux Install](#linux)
+- [macOS Install](#macos)
 
 ### Windows
 
@@ -261,7 +259,7 @@ You will know that the drivers have been installed correctly if the Device
 Manager adds the string "(WinUSB)" at the end of the spectrometer name.
 
 Finally, you can "pre-load" the drivers using Microsoft's 
-<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff544775%28v=vs.85%29.aspx">dpinst.exe</a>
+[dpinst.exe](http://msdn.microsoft.com/en-us/library/windows/hardware/ff544775%28v=vs.85%29.aspx)
 utility (included), where $ARCH is i386 or amd64 as 
 appropriate (see 'dpinst /?' for other options):
 
@@ -280,7 +278,7 @@ rule nomenclature; the provided file uses the newer "ATTR" standard.
 
 ### MacOS
 
-\todo Document MacOS installation
+- [ ] Document MacOS installation
 
 ## Testing SeaBreeze
 
@@ -292,9 +290,9 @@ should work with a "runtime / redistributable" copy of SeaBreeze installed
 through .msi installers.  However, the expectation remains that users would
 normally compile SeaBreeze locally.
 
-- \ref test_win
-- \ref test_linux
-- \ref test_macos
+- [Testing on Windows](#windows)
+- [Testing on Linux](#linux)
+- [Testing on macOS](#macos)
 
 ### Windows
 
@@ -793,4 +791,4 @@ in the Device Manager (Properties -> Details -> Hardware IDs), or by running:
 ```
     $Header: http://gforge.oceanoptics.com/svn/seabreeze/releases/Release_2014_10_01-1730-3.0/README.txt 1221 2014-10-01 21:35:43Z mzieg $
 ```
-*/
+
