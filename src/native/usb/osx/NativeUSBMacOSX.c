@@ -352,7 +352,7 @@ USBProbeDevices(int vendorID, int productID, unsigned long *output,
     idProduct = productID;
 
     /* Attempt to create a master port; throw an IOException if we can't */
-    if(IOMasterPort(MACH_PORT_NULL, &masterPort) != kIOReturnSuccess) {
+    if(IOMainPort(MACH_PORT_NULL, &masterPort) != kIOReturnSuccess) {
         return -1;
     }
 
@@ -559,7 +559,7 @@ USBOpen(unsigned long deviceID, int *errorCode) {
     idProduct = instance->productID;
 
     /* Attempt to create a master port */
-    if(IOMasterPort(MACH_PORT_NULL, &masterPort) != kIOReturnSuccess) {
+    if(IOMainPort(MACH_PORT_NULL, &masterPort) != kIOReturnSuccess) {
         goto error0;
     }
 

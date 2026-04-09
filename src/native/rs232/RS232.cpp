@@ -35,6 +35,8 @@
 #include <stdio.h>  /* For debugging, feel free to replace with iostream */
 #include <string.h> /* for memset() */
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 using namespace seabreeze;
 using namespace std;
@@ -215,24 +217,22 @@ void RS232::hexDump(void *x, int length) {
      * in C.  This can be ported to C++-style cerr::<< or ostream::<< if that
      * really seems important.
      */
-    int i, j;
-    int written;
-    char buf[256];
-
-    for(i = 0; i < (length / 16) + 1; i++) {
-        written = 0;
-        written += sprintf(buf + written, "[%04X]: ", (i * 16 & 0x00FFFF));
-        for(j = 0; j < 16 && (j + (i * 16) < length); j++) {
-            written += sprintf(buf + written,
-                    "%02X ", ((char *)x)[j + (i * 16)] & 0x00FF);
+    unsigned char *ptr = static_cast<unsigned char *>(x);
+    
+    for(int i = 0; i < length; i += 16) {
+        // Print the address header: e.g., [00A0]:
+        std::cerr << "[" 
+                  << std::setw(4) << std::setfill('0') << std::hex << std::uppercase 
+                  << (i & 0x00FFFF) << "]: ";
+                  
+        // Print up to 16 bytes per line
+        for(int j = 0; j < 16 && (i + j) < length; j++) {
+            std::cerr << std::setw(2) << std::setfill('0') << std::hex << std::uppercase 
+                      << static_cast<int>(ptr[i + j]) << " ";
         }
-        written += sprintf(buf + written, "\n");
-        fprintf(stderr, "%s", buf);
-        if(j < 16 && (j + i * 16 >= length)) {
-            break;
-        }
+        
+        std::cerr << std::endl;
     }
-    fflush(stderr);
 }
 
 void RS232::describeTransfer(int length, bool out) {

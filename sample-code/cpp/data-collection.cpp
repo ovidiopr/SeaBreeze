@@ -244,8 +244,8 @@ int main(int argc, char **argv)
     if (hasError("get_formatted_spectrum_length"))
         exit(1);
 
-    double wavelengths[pixels];
-    seabreeze_get_wavelengths(specIndex, &error, wavelengths, sizeof(wavelengths));
+    std::vector<double> wavelengths(pixels);
+    seabreeze_get_wavelengths(specIndex, &error, wavelengths.data(), wavelengths.size() * sizeof(double));
     if (hasError("get_wavelengths"))
         exit(1);
 
@@ -285,18 +285,18 @@ int main(int argc, char **argv)
             {
                 // process acquisition
                 seabreeze_log_debug("collecting scan %d of %lu", scanCount + 1, step.scanCount);
-                double spectrum[pixels];
-                seabreeze_get_formatted_spectrum(specIndex, &error, spectrum, sizeof(spectrum));
+                std::vector<double> spectrum(pixels);
+                seabreeze_get_formatted_spectrum(specIndex, &error, spectrum.data(), spectrum.size() * sizeof(double));
                 if (hasError("get_formatted_spectrum"))
                     exit(1);
 
                 // perform multi-scan averaging (used to be in SeaBreeze, now application code)
                 if (step.scansToAverage > 1)
                 {
-                    double tmp[pixels];
+                    std::vector<double> tmp(pixels);
                     for (unsigned acqCount = 1; acqCount < step.scansToAverage; acqCount++)
                     {
-                        seabreeze_get_formatted_spectrum(specIndex, &error, tmp, sizeof(tmp));
+                        seabreeze_get_formatted_spectrum(specIndex, &error, tmp.data(), tmp.size() * sizeof(double));
                         if (hasError("get_formatted_spectrum"))
                             exit(1);
                         for (unsigned pixel = 0; pixel < pixels; pixel++)
