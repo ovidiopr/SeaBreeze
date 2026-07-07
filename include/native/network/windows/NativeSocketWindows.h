@@ -44,9 +44,9 @@ namespace seabreeze {
         virtual ~NativeSocketWindows();
         
         virtual void connect(Inet4Address &addr, int port)
-                throw (UnknownHostException, BusConnectException);
+                ;
         virtual void connect(const std::string hostname, int port)
-                throw (UnknownHostException, BusConnectException);
+                ;
         
         virtual void close() ;
         virtual bool isClosed();

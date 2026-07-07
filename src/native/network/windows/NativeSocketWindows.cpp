@@ -50,7 +50,7 @@ NativeSocketWindows::~NativeSocketWindows() {
 }
 
 void NativeSocketWindows::connect(Inet4Address &addr, int port)
-        throw (UnknownHostException, BusConnectException) {
+         {
     struct in_addr in;
     struct sockaddr_in sockaddr;
     int addrlen;
@@ -80,7 +80,7 @@ void NativeSocketWindows::connect(Inet4Address &addr, int port)
 }
 
 void NativeSocketWindows::connect(const string hostname, int port)
-        throw (UnknownHostException, BusConnectException) {
+         {
     
     struct hostent *host_info;
     struct in_addr in;

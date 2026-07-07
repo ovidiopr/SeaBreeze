@@ -62,7 +62,7 @@ NativeSocketPOSIX::~NativeSocketPOSIX() {
 }
         
 void NativeSocketPOSIX::connect(Inet4Address &addr, int port)
-        throw (UnknownHostException, BusConnectException) {
+         {
     struct in_addr in;
     struct sockaddr_in sockaddr;
     socklen_t addrlen;
@@ -92,7 +92,7 @@ void NativeSocketPOSIX::connect(Inet4Address &addr, int port)
 }
 
 void NativeSocketPOSIX::connect(const string hostname, int port)
-        throw (UnknownHostException, BusConnectException) {
+         {
     
     struct hostent *host_info;
     struct in_addr in;
