@@ -47,7 +47,7 @@ OBPWaveCalProtocol::~OBPWaveCalProtocol() {
 
 vector<double> *OBPWaveCalProtocol::readWavelengthCoeffs(const Bus &bus)
                  {
-    vector<byte> *result = NULL;
+    vector<unsigned char> *result = NULL;
     unsigned int i;
     vector<double> *retval;
     float coeff;
