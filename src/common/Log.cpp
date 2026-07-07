@@ -160,8 +160,9 @@ void Log::formatAndSend(
     const char *fmt,
     va_list args)
 {
-    if (logFile == NULL)
+    if (logFile == NULL) {
         return;
+    }
 
 	unsigned indent = (unsigned int) (callstack->size() - 1) * 4;
 	if (OOI_LOG_LEVEL_TRACE == lvl && indent > 2)
@@ -177,8 +178,9 @@ void Log::formatAndSend(
     fflush(logFile);
 
     vfprintf(logFile, fmt, args);
-    if (fmt[strlen(fmt)] != '\n')
+    if (fmt[strlen(fmt)] != '\n') {
         fprintf(logFile, "\n");
+    }
 	fflush(logFile);
 }
 
