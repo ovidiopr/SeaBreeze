@@ -55,7 +55,7 @@ double OBPThermoElectricProtocol::readThermoElectricTemperatureCelsius(
     vector<unsigned char> *result;
     float temp = 0;
     unsigned int i;
-    byte *cptr;
+    ::byte *cptr;
 
     OBPGetThermoElectricTemperatureExchange xchange;
 
@@ -74,7 +74,7 @@ double OBPThermoElectricProtocol::readThermoElectricTemperatureCelsius(
     }
 
     vector<unsigned char>::iterator iter;
-    cptr = (byte *)&temp;
+    cptr = (::byte *)&temp;
     for(iter = result->begin(), i = 0;
                 iter != result->end() && i < sizeof(float); iter++, i++) {
         /* FIXME: this assumes the host is little-endian.  Is this safe? */

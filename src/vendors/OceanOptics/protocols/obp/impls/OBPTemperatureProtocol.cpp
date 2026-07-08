@@ -77,7 +77,7 @@ double OBPTemperatureProtocol::readTemperature(const Bus &bus, int index)
 {
     vector<unsigned char> *result = NULL;
     float temperature;
-    byte *bptr;
+    ::byte *bptr;
     int count = 0;
     vector<unsigned char> *countResult;
     
@@ -113,8 +113,8 @@ double OBPTemperatureProtocol::readTemperature(const Bus &bus, int index)
             throw ProtocolException(error);
         }
         
-        // queryDevice returns a byte stream, turn that into a float... mind our endians.
-        bptr = (byte *)&temperature;
+        // queryDevice returns a ::byte stream, turn that into a float... mind our endians.
+        bptr = (::byte *)&temperature;
         for(unsigned int j = 0; j < sizeof(float); j++) { // four bytes returned
             //printf("byte %d=%x\n", j, (*result)[j]);
             bptr[j] = (*result)[j];  // get a little endian float
@@ -136,7 +136,7 @@ vector<double> *OBPTemperatureProtocol::readAllTemperatures(const Bus &bus)
     vector<unsigned char> *result = NULL;
     unsigned int i;
     vector<double> *retval; // temperatures
-    byte *bptr;
+    ::byte *bptr;
     float temperatureBuffer;
     int count = 0;
     vector<unsigned char> *countResult;
@@ -160,7 +160,7 @@ vector<double> *OBPTemperatureProtocol::readAllTemperatures(const Bus &bus)
     delete countResult;
 
     retval = new vector<double>(count); // temperature array to be returned
-    // query device returns a generic byte array, 
+    // query device returns a generic ::byte array, 
     // not temperature floats as defined by the actual command 
     result = xchange.queryDevice(helper); 
     if(NULL == result) {
@@ -175,7 +175,7 @@ vector<double> *OBPTemperatureProtocol::readAllTemperatures(const Bus &bus)
         // the bytes must be transferred to floats for the return temperatures
         for(i = 0; i < retval->size(); i++) {
             
-            bptr = (byte *)&temperatureBuffer;
+            bptr = (::byte *)&temperatureBuffer;
             for(unsigned int j = 0; j < sizeof(float); j++) {
                 bptr[j] = (*result)[j+(i*sizeof(float))];
             }

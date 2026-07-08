@@ -79,8 +79,8 @@ OOIReadIrradCalExchange::OOIReadIrradCalExchange(int numberOfPixels)
         responseHints->push_back(new ControlHint());
 
         (*(requestBuffer))[0] = OpCodes::OP_READ_IRRAD_CAL;
-        (*(requestBuffer))[1] = (byte)( (addr) & 0x00FF);
-        (*(requestBuffer))[2] = (byte)((addr>>8) & 0x00FF);
+        (*(requestBuffer))[1] = (::byte)( (addr) & 0x00FF);
+        (*(requestBuffer))[2] = (::byte)((addr>>8) & 0x00FF);
 
         Transfer *request = new Transfer(requestHints,
             requestBuffer, Transfer::TO_DEVICE, 3);

@@ -55,8 +55,8 @@ Data *QESpectrumExchange::transfer(TransferHelper *helper)
 
     unsigned int i;
     Data *xfer;
-    byte lsb;
-    byte msb;
+    ::byte lsb;
+    ::byte msb;
 
     /* Use the superclass to move the data into a local buffer. */
     /* This transfer() may cause a ProtocolException to be thrown. */
@@ -74,7 +74,7 @@ Data *QESpectrumExchange::transfer(TransferHelper *helper)
     delete xfer;
     /* At this point, this->buffer should have the raw spectrum data. */
 
-    /* In this style of transfer, the last byte should be 0x69.  If it is not, then
+    /* In this style of transfer, the last ::byte should be 0x69.  If it is not, then
      * we have probably lost synchronization with the data stream.
      */
     if((*(this->buffer))[this->length - 1] != 0x69) {

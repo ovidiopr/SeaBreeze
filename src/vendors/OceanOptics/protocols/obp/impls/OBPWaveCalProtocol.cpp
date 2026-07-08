@@ -51,7 +51,7 @@ vector<double> *OBPWaveCalProtocol::readWavelengthCoeffs(const Bus &bus)
     unsigned int i;
     vector<double> *retval;
     float coeff;
-    byte *bptr;
+    ::byte *bptr;
 
     OBPGetWaveCalExchange xchange;
 
@@ -73,7 +73,7 @@ vector<double> *OBPWaveCalProtocol::readWavelengthCoeffs(const Bus &bus)
             throw ProtocolException(error);
         }
 
-        bptr = (byte *)&coeff;
+        bptr = (::byte *)&coeff;
         for(unsigned int j = 0; j < sizeof(float); j++) {
             bptr[j] = (*result)[j];
         }

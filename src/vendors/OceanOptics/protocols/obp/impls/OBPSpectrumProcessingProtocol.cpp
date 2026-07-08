@@ -55,7 +55,7 @@ unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToA
 {
     vector<unsigned char> *result = NULL;
     unsigned short int scansToAverage;
-    byte *bptr;
+    ::byte *bptr;
         
     OBPGetScansToAverageExchange xchange;
     
@@ -74,8 +74,8 @@ unsigned short int OBPSpectrumProcessingProtocol::readSpectrumProcessingScansToA
         throw ProtocolException(error);
     }
     
-    // queryDevice returns a byte stream, turn that into a float... mind our endians.
-    bptr = (byte *)&scansToAverage;
+    // queryDevice returns a ::byte stream, turn that into a float... mind our endians.
+    bptr = (::byte *)&scansToAverage;
     for(unsigned int j = 0; j < sizeof(unsigned short int); j++) {
         bptr[j] = (*result)[j];
     }

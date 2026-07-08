@@ -4,7 +4,7 @@
  * @author  Ocean Optics, Inc.
  *
  * All messages in the Ocean Binary Protocol begin with
- * a standard 64-byte header.  It is always safe to read
+ * a standard 64-::byte header.  It is always safe to read
  * 64 bytes for the start of a new transfer from a device
  * that supports this protocol, which works nicely with
  * the USB minimum packet size.
@@ -276,7 +276,7 @@ unsigned int OBPMessage::getBytesRemaining() {
 }
 
 
-byte OBPMessage::getChecksumType() {
+::byte OBPMessage::getChecksumType() {
     return this->checksumType;
 }
 
@@ -296,7 +296,7 @@ vector<unsigned char> *OBPMessage::getImmediateData() {
 }
 
 
-byte OBPMessage::getImmediateDataLength() {
+::byte OBPMessage::getImmediateDataLength() {
     return this->immediateDataLength;
 }
 
@@ -338,7 +338,7 @@ void OBPMessage::setBytesRemaining(unsigned int remaining) {
 }
 
 
-void OBPMessage::setChecksumType(byte t) {
+void OBPMessage::setChecksumType(::byte t) {
     this->checksumType = t;
 }
 
@@ -369,7 +369,7 @@ void OBPMessage::setImmediateData(vector<unsigned char> *data) {
     this->immediateData = data;
     if(0 != this->immediateData) {
         if(this->immediateData->size() <= 16) {
-            this->immediateDataLength = (byte)this->immediateData->size();
+            this->immediateDataLength = (::byte)this->immediateData->size();
         } else {
             this->immediateDataLength = 16;
         }
@@ -381,7 +381,7 @@ void OBPMessage::setImmediateData(vector<unsigned char> *data) {
 }
 
 
-void OBPMessage::setImmediateDataLength(byte len) {
+void OBPMessage::setImmediateDataLength(::byte len) {
     this->immediateDataLength = len;
 }
 

@@ -53,7 +53,7 @@ vector<double> *OBPStrayLightCoeffsProtocol::readStrayLightCoeffs(const Bus &bus
     unsigned int i;
     vector<double> *retval;
     float coeff;
-    byte *bptr;
+    ::byte *bptr;
     int count = 0;
     vector<unsigned char> *countResult;
 
@@ -87,7 +87,7 @@ vector<double> *OBPStrayLightCoeffsProtocol::readStrayLightCoeffs(const Bus &bus
             throw ProtocolException(error);
         }
 
-        bptr = (byte *)&coeff;
+        bptr = (::byte *)&coeff;
         for(unsigned int j = 0; j < sizeof(float); j++) {
             bptr[j] = (*result)[j];
         }

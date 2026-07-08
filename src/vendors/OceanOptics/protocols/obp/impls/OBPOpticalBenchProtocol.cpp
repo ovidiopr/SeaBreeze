@@ -277,7 +277,7 @@ unsigned short int OBPOpticalBenchProtocol::readOpticalBenchSlitWidthMicrons(con
 {
     vector<unsigned char> *result = NULL;
     unsigned short int slitWidth;
-    byte *bptr;
+    ::byte *bptr;
         
     OBPGetOpticalBenchSlitWidthMicronsExchange xchange;
     
@@ -296,8 +296,8 @@ unsigned short int OBPOpticalBenchProtocol::readOpticalBenchSlitWidthMicrons(con
         result->resize(sizeof(unsigned short int));
     }
     
-    // queryDevice returns a byte stream, turn that into a float... mind our endians.
-    bptr = (byte *)&slitWidth;
+    // queryDevice returns a ::byte stream, turn that into a float... mind our endians.
+    bptr = (::byte *)&slitWidth;
     for(unsigned int j = 0; j < sizeof(unsigned short int); j++) {
         bptr[j] = (*result)[j];
     }
@@ -312,7 +312,7 @@ unsigned short int OBPOpticalBenchProtocol::readOpticalBenchFiberDiameterMicrons
 {
     vector<unsigned char> *result = NULL;
     unsigned short int fiberDiameter;
-    byte *bptr;
+    ::byte *bptr;
         
     OBPGetOpticalBenchFiberDiameterMicronsExchange xchange;
     
@@ -331,8 +331,8 @@ unsigned short int OBPOpticalBenchProtocol::readOpticalBenchFiberDiameterMicrons
         result->resize(sizeof(unsigned short int));
     }
     
-    // queryDevice returns a byte stream, turn that into a float... mind our endians.
-    bptr = (byte *)&fiberDiameter;
+    // queryDevice returns a ::byte stream, turn that into a float... mind our endians.
+    bptr = (::byte *)&fiberDiameter;
     for(unsigned int j = 0; j < sizeof(unsigned short int); j++) {
         bptr[j] = (*result)[j];
     }
