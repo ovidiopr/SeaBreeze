@@ -322,7 +322,10 @@ int main(int argc, char **argv)
         char line[80];
         memset(line, 0, sizeof(line));
         for (int i = 0; i < device_count; i++)
-            snprintf(line, sizeof(line), "%s%-16s", line, devices[i].serial);
+        {
+            size_t cur_len = strlen(line);
+            snprintf(line + cur_len, sizeof(line) - cur_len, "%-16s", devices[i].serial);
+        }
         logger(line);
     }
 
