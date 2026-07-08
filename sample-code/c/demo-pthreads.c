@@ -161,7 +161,8 @@ void monitor_timer_entry(int signum)
             msg = "V (NEW SCAN)";
             devices[i].last_scan_count = scan_count;
         }
-        snprintf(line, sizeof(line), "%s%-16s", line, msg);
+        size_t cur_len = strlen(line);
+        snprintf(line + cur_len, sizeof(line) - cur_len, "%-16s", msg);
     }
     logger(line);
 }
